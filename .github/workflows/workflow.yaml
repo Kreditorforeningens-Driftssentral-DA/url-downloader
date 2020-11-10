@@ -1,0 +1,27 @@
+---
+name: CICD
+on: [workflow_dispatch]
+# push:
+#   branches:
+#   - master
+#   paths-ignore:
+#   - '**.md'
+jobs:
+
+  build:
+    name: Go validation
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-go@v2
+    - name: Validate formatting
+      run: gofmt -l -d .
+    - name: Build
+      run: |
+        pushd src
+        go build -o urldl .
+        popd
+...
