@@ -1,0 +1,11 @@
+*
+
+# ONLY include the following files
+!.gitignore
+!Dockerfile
+!LICENSE
+!Makefile
+
+!*.md
+!*.mod
+!*.go
